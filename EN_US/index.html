@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8" />
+	<title>SAMSUNG HEALTH - Introducing the newly improved Together with Team challenge!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="style.css" />
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="custom.js"></script>
+</head>
+<body>
+	<div class="promotion-frame">
+		<div class="section">
+			<img src="SH_N-N_us_01.jpg" alt="text image" />
+		</div>
+		<div class="section section-body">
+			<img src="SH_N-N_us_02.jpg" alt="text image" />
+			<img src="SH_N-N_us_03.jpg" alt="text image" />
+			<img src="SH_N-N_us_04.jpg" alt="text image" />
+			<img src="SH_N-N_us_05.jpg" alt="text image" />
+			<img src="SH_N-N_us_06.jpg" alt="text image" />
+		</div>
+		<div class="section footer">
+			<!-- 함께 걸으러 가기 버튼 -->
+			<a href="https://shealth.samsung.com/deepLink?sc_id=app.main&action=view&destination=together&type=sc&v_s=6.15"  id="cta1">
+				<img src="SH_N-N_us_07.jpg" alt="text image" />
+			</a>
+			<img src="SH_N-N_us_08.jpg" alt="text image" />
+			
+		</div>
+	</div>
+
+	<!-- SamsungHealth Tracking -->
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		/* 함께 걸으러 가기 클릭 시 */
+		var elmLink1 = document.getElementById("cta1");
+		elmLink1.onclick = function () {
+			try {
+				console.log("click_first_1");
+				PromotionScript.insertGoogleAnalyticsLog("SH_N-N_us", "gowalkBtn");
+				PromotionScript.insertHealthAnalyticsLog("SH_N-N_us", "gowalkBtn");
+			} catch (e) {}
+		}
+
+		/* 스크롤 끝까지 이동 */
+		var count = 0;
+		window.onscroll = function () {
+			var d = document.documentElement;
+			var offset = d.scrollTop + window.innerHeight;
+			var height = d.offsetHeight;
+
+			if (count == 0) {
+				if (offset + 10 >= height) {
+					console.log("endofscroll");
+					count++;
+					try {
+						PromotionScript.insertHealthAnalyticsLog("SH_N-N_us", "endofscroll");
+					} catch (e) {}
+				};
+			};
+		};
+	</script>
+</body>
+</html>
